@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: #1d293a;
+  color: #fff;
+}
+
+button {
+  padding: 15px 24px;
+  border: none;
+  color: #fff;
+  outline: none;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.wrapper .sidebar {
+  position: relative;
+}
+
+.wrapper .sidebar .bg_shadow {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.wrapper .sidebar__inner {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #0f1722;
+  z-index: 999;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+.wrapper .main_container {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  transition: all 0.3s ease;
+}
+
+.wrapper .sidebar__inner .content {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.wrapper .sidebar__inner .content h2 {
+  padding-bottom: 40px;
+  cursor: pointer;
+}
+
+.wrapper .main_container .top_navbar {
+  width: calc(100% - 250px);
+  height: 60px;
+  background: #1d293a;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 25px;
+  position: fixed;
+  top: 0;
+  left: 250px;
+  transition: all 0.3s ease;
+}
+
+.wrapper .main_container .top_navbar .hamburger {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: none;
+}
+
+.wrapper .main_container .top_navbar .hamburger .fas {
+  color: #6c63ff;
+  font-size: 25px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper .main_container .top_navbar .menu {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper .sidebar__inner .close {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  font-size: 25px;
+  color: #fff;
+  display: none;
+  cursor: pointer;
+}
+
+.wrapper .sidebar__inner .close:hover {
+  opacity: 0.5;
+}
+
+.company {
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  right: 10px;
+}
+
+.sidebar_btns {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.sidebar_btns button {
+  background: #151e2b;
+}
+
+.sidebar_btns button:hover,
+.sidebar_btns button:focus {
+  background: #6c63ff;
+  outline: none;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  padding: 30px;
+  margin-top: 50px;
+}
+
+.sc_btn {
+  margin: 5px;
+}
+
+.container button {
+  background-color: #354357;
+  width: 100%;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.container button:hover {
+  background: #6c63ff;
+}
+
+.container button:focus {
+  outline: none;
+}
+
+.container input {
+  width: 100%;
+  padding: 10px;
+  text-align: right;
+  font-size: 2rem;
+  background-color: #1d293a;
+  border: none;
+  color: #fff;
+}
+
+.container input:focus {
+  outline: none;
+}
+
+.container select {
+  background-color: #1d293a;
+  color: #fff;
+  border: none;
+}
+
+.container select:focus {
+  outline: none;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.results input {
+  text-align: left;
+}
+
+#introScreen {
+  text-align: center;
+  padding: 20px;
+}
+
+#simpleCal,
+#weightCal,
+#lengthCal,
+#volumeCal,
+#tempCal,
+#timeCal {
+  display: none;
+}
+
+footer {
+  color: #fff;
+  text-align: center;
+  position: fixed;
+  left: 120px;
+  bottom: 0px;
+  height: 30px;
+  width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .wrapper .sidebar__inner {
+    left: -100%;
+  }
+  .wrapper .main_container,
+  .wrapper .main_container .top_navbar {
+    margin-left: 0;
+    width: 100%;
+  }
+  .wrapper .main_container .top_navbar {
+    left: 0;
+  }
+  .wrapper.active .sidebar__inner {
+    left: 0;
+  }
+  .wrapper .sidebar__inner .close,
+  .wrapper .main_container .top_navbar .hamburger {
+    display: block;
+  }
+  .wrapper.active .sidebar .bg_shadow {
+    visibility: visible;
+    opacity: 0.7;
+  }
+  footer {
+    left: 0;
+    bottom: 5px;
+  }
+  .results {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .results div {
+    margin: 0 20px;
+  }
+  .results div input {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .wrapper .main_container .top_navbar .menu {
+    display: none;
+  }
+}

@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <!--Faont Awesome CSS-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+      crossorigin="anonymous"
+    />
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="icon" href="images/cal.png" />
+
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!---------------------------------Sidebar Starts--------------------------------->
+      <div class="sidebar">
+        <div class="bg_shadow"></div>
+        <div class="sidebar__inner">
+          <div class="close">
+            <i class="fas fa-times"></i>
+          </div>
+          <div class="content">
+            <h2 value="" onclick="changeCalculator(this,'introScreen','block')">
+              Calculator
+            </h2>
+            <p>Select any feature</p>
+            <div class="sidebar_btns">
+              <button
+                id="standard"
+                type="button"
+                value="Standard"
+                onclick="changeCalculator(this,'simpleCal','block')"
+              >
+                <i class="fas fa-calculator"></i>
+              </button>
+              <button
+                id="weight"
+                type="button"
+                value="Weight & Mass"
+                onclick="changeCalculator(this,'weightCal','flex')"
+              >
+                <i class="fas fa-weight-hanging"></i>
+              </button>
+            </div>
+            <div class="sidebar_btns">
+              <button
+                id="length"
+                type="button"
+                value="Length"
+                onclick="changeCalculator(this,'lengthCal','flex')"
+              >
+                <i class="fas fa-ruler"></i>
+              </button>
+              <button
+                id="volume"
+                type="button"
+                value="Volume"
+                onclick="changeCalculator(this,'volumeCal','flex')"
+              >
+                <i class="fas fa-cube"></i>
+              </button>
+            </div>
+            <div class="sidebar_btns">
+              <button
+                id="temp"
+                type="button"
+                value="Temperature"
+                onclick="changeCalculator(this,'tempCal','flex')"
+              >
+                <i class="fas fa-thermometer-half"></i>
+              </button>
+              <button
+                id="time"
+                type="button"
+                value="Time"
+                onclick="changeCalculator(this,'timeCal','flex')"
+              >
+                <i class="fas fa-clock"></i>
+              </button>
+            </div>
+            <div class="company">
+              <p>
+                Design & Deveveloped by
+                <a
+                  href="https://thewebsters.netlify.app/index.html#"
+                  target="_blank"
+                  ><img
+                    src="images/webster.png"
+                    alt="image"
+                    width="100px"
+                    height="20px"
+                /></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!---------------------------------Sidebar Ends--------------------------------->
+
+      <div class="main_container">
+        <!---------------------------------Topbar Starts--------------------------------->
+        <div class="top_navbar">
+          <div class="hamburger">
+            <div class="hamburger__inner">
+              <i class="fas fa-bars"></i>
+            </div>
+          </div>
+          <div>
+            <h2 id="calHeading"></h2>
+          </div>
+        </div>
+        <!---------------------------------Topbar Ends--------------------------------->
+
+        <div class="container" id="cals">
+          <!---------------------------------Intro Starts--------------------------------->
+          <div id="introScreen">
+            <h1>Calculator</h1>
+            <p>
+              This online calculator can perform simple to complex calculations. It is 
+              also designed to perform various type of conversions. We design it with simple 
+              user interface to make it easy to use. 
+            </p>
+          </div>
+          <!---------------------------------Intro Ends--------------------------------->
+
+          <!---------------------------------Simple Calculator Starts--------------------------------->
+          <div id="simpleCal">
+            <table>
+              <tr>
+                <td colspan="4">
+                  <div class="sc_btn">
+                    <input type="text" value="0" id="scInput" disabled />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="back('scInput')">
+                      <i class="fas fa-backspace"></i>
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="clean('scInput')">C</button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','%')">
+                      %
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','/')">
+                      ÷
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','7')">
+                      7
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','8')">
+                      8
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','9')">
+                      9
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','*')">
+                      X
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','4')">
+                      4
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','5')">
+                      5
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','6')">
+                      6
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','-')">
+                      -
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','1')">
+                      1
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','2')">
+                      2
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','3')">
+                      3
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','+')">
+                      +
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','0')">
+                      0
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="insert('scInput','.')">
+                      .
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="sc_btn">
+                    <button type="button" onclick="scEvaluate('scInput')">
+                      =
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!---------------------------------Simple Calculator Ends--------------------------------->
+
+          <!---------------------------------Weight Calculator Starts--------------------------------->
+          <div id="weightCal">
+            <div class="row">
+              <div class="col-md-6 results">
+                <div>
+                  <input type="text" value="0" id="weightInput" disabled />
+                  <select id="wegInSel">
+                    <option value="mg">Milligrams</option>
+                    <option value="g">Grams</option>
+                    <option value="kg">Kilograms</option>
+                    <option value="pounds">Pounds</option>
+                  </select>
+                </div>
+                <div>
+                  <input type="text" value="0" id="weightOutput" disabled />
+                  <select id="wegOutSel">
+                    <option value="mg">Milligrams</option>
+                    <option value="g">Grams</option>
+                    <option value="kg">Kilograms</option>
+                    <option value="pounds">Pounds</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <table class="mx-auto">
+                  <tr>
+                    <td></td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="back('weightInput')">
+                          <i class="fas fa-backspace"></i>
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="cleanResults('weightInput','weightOutput')"
+                        >
+                          C
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('weightInput','7')"
+                        >
+                          7
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('weightInput','8')"
+                        >
+                          8
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('weightInput','9')"
+                        >
+                          9
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('weightInput','4')"
+                        >
+                          4
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('weightInput','5')"
+                        >
+                          5
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('weightInput','6')"
+                        >
+                          6
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('weightInput','1')"
+                        >
+                          1
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('weightInput','2')"
+                        >
+                          2
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('weightInput','3')"
+                        >
+                          3
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('weightInput','0')"
+                        >
+                          0
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('weightInput','.')"
+                        >
+                          .
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="weightEvaluate()">
+                          =
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!---------------------------------Weight Calculator Ends--------------------------------->
+
+          <!---------------------------------Length Calculator Starts--------------------------------->
+          <div id="lengthCal">
+            <div class="row">
+              <div class="col-md-6 results">
+                <div>
+                  <input type="text" value="0" id="lengthInput" disabled />
+                  <select id="lenInSel">
+                    <option value="cm">Centimeters</option>
+                    <option value="m">Meters</option>
+                    <option value="km">Kilometers</option>
+                    <option value="inch">Inches</option>
+                  </select>
+                </div>
+                <div>
+                  <input type="text" value="0" id="lengthOutput" disabled />
+                  <select id="lenOutSel">
+                    <option value="cm">Centimeters</option>
+                    <option value="m">Meters</option>
+                    <option value="km">Kilometers</option>
+                    <option value="inch">Inches</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <table class="mx-auto">
+                  <tr>
+                    <td></td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="back('lengthInput')">
+                          <i class="fas fa-backspace"></i>
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="cleanResults('lengthInput','lengthOutput')"
+                        >
+                          C
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('lengthInput','7')"
+                        >
+                          7
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('lengthInput','8')"
+                        >
+                          8
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('lengthInput','9')"
+                        >
+                          9
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('lengthInput','4')"
+                        >
+                          4
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('lengthInput','5')"
+                        >
+                          5
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('lengthInput','6')"
+                        >
+                          6
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('lengthInput','1')"
+                        >
+                          1
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('lengthInput','2')"
+                        >
+                          2
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('lengthInput','3')"
+                        >
+                          3
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('lengthInput','0')"
+                        >
+                          0
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('lengthInput','.')"
+                        >
+                          .
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="lengthEvaluate()">
+                          =
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!---------------------------------Length Calculator Ends--------------------------------->
+
+          <!---------------------------------Volume Calculator Starts--------------------------------->
+          <div id="volumeCal">
+            <div class="row">
+              <div class="col-md-6 results">
+                <div>
+                  <input type="text" value="0" id="volumeInput" disabled />
+                  <select id="volInSel">
+                    <option value="ml">Milliliters</option>
+                    <option value="cm3">Cubic cm</option>
+                    <option value="l">Liters</option>
+                    <option value="m3">Cubic Meters</option>
+                  </select>
+                </div>
+                <div>
+                  <input type="text" value="0" id="volumeOutput" disabled />
+                  <select id="volOutSel">
+                    <option value="ml">Milliliters</option>
+                    <option value="cm3">Cubic cm</option>
+                    <option value="l">Liters</option>
+                    <option value="m3">Cubic Meters</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <table class="mx-auto">
+                  <tr>
+                    <td></td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="back('volumeInput')">
+                          <i class="fas fa-backspace"></i>
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="cleanResults('volumeInput','volumeOutput')"
+                        >
+                          C
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('volumeInput','7')"
+                        >
+                          7
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('volumeInput','8')"
+                        >
+                          8
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('volumeInput','9')"
+                        >
+                          9
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('volumeInput','4')"
+                        >
+                          4
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('volumeInput','5')"
+                        >
+                          5
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('volumeInput','6')"
+                        >
+                          6
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('volumeInput','1')"
+                        >
+                          1
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('volumeInput','2')"
+                        >
+                          2
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('volumeInput','3')"
+                        >
+                          3
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('volumeInput','0')"
+                        >
+                          0
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('volumeInput','.')"
+                        >
+                          .
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="volumeEvaluate()">
+                          =
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!---------------------------------Volume Calculator Ends--------------------------------->
+
+          <!---------------------------------Temperature Calculator Starts--------------------------------->
+          <div id="tempCal">
+            <div class="row">
+              <div class="col-md-6 results">
+                <div>
+                  <input type="text" value="0" id="tempInput" disabled />
+                  <select id="tempInSel">
+                    <option value="dc">Celsius</option>
+                    <option value="df">Fahrenheit</option>
+                    <option value="dk">Kelvin</option>
+                  </select>
+                </div>
+                <div>
+                  <input type="text" value="0" id="tempOutput" disabled />
+                  <select id="tempOutSel">
+                    <option value="dc">Celsius</option>
+                    <option value="df">Fahrenheit</option>
+                    <option value="dk">Kelvin</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <table class="mx-auto">
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="back('tempInput')">
+                          <i class="fas fa-backspace"></i>
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="cleanResults('tempInput','tempOutput')"
+                        >
+                          C
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insertSign('tempInput')">
+                          +/-
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('tempInput','7')">
+                          7
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('tempInput','8')">
+                          8
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('tempInput','9')">
+                          9
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('tempInput','4')">
+                          4
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('tempInput','5')">
+                          5
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('tempInput','6')">
+                          6
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('tempInput','1')">
+                          1
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('tempInput','2')">
+                          2
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('tempInput','3')">
+                          3
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('tempInput','0')">
+                          0
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('tempInput','.')">
+                          .
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="tempEvaluate()">
+                          =
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!---------------------------------Temperature Calculator Ends--------------------------------->
+
+          <!---------------------------------Time Calculator Starts--------------------------------->
+          <div id="timeCal">
+            <div class="row">
+              <div class="col-md-6 results">
+                <div>
+                  <input type="text" value="0" id="timeInput" disabled />
+                  <select id="timeInSel">
+                    <option value="ms">Milliseconds</option>
+                    <option value="s">Seconds</option>
+                    <option value="m">Minutes</option>
+                    <option value="hr">Hours</option>
+                  </select>
+                </div>
+                <div>
+                  <input type="text" value="0" id="timeOutput" disabled />
+                  <select id="timeOutSel">
+                    <option value="ms">Milliseconds</option>
+                    <option value="s">Seconds</option>
+                    <option value="m">Minutes</option>
+                    <option value="hr">Hours</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <table class="mx-auto">
+                  <tr>
+                    <td></td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="back('timeInput')">
+                          <i class="fas fa-backspace"></i>
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="cleanResults('timeInput','timeOutput')"
+                        >
+                          C
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('timeInput','7')">
+                          7
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('timeInput','8')">
+                          8
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('timeInput','9')">
+                          9
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button
+                          type="button"
+                          onclick="insert('volumeInput','4')"
+                        >
+                          4
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('timeInput','5')">
+                          5
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('timeInput','6')">
+                          6
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('timeInput','1')">
+                          1
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('timeInput','2')">
+                          2
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('timeInput','3')">
+                          3
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('timeInput','0')">
+                          0
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="insert('timeInput','.')">
+                          .
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="sc_btn">
+                        <button type="button" onclick="timeEvaluate()">
+                          =
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!---------------------------------Time Calculator Ends--------------------------------->
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2020 Calculator. All rights reserved.</p>
+    </footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- TippyJS -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <!-- CustomJS -->
+    <script src="js/app.js"></script>
+  </body>
+</html>
